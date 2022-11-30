@@ -1,4 +1,7 @@
 # Carga da base de dados disponibilizada pelo Banco Central
+#
+# URL da base de dados : https://www.bcb.gov.br/estabilidadefinanceira/consorciobd
+#
 dados_bc <- carrega_csvs("Base de Dados", "*Segmentos_Consolidados.csv")
 
 # Sumarização dos dados carregados, baseada no mês / ano da informação
