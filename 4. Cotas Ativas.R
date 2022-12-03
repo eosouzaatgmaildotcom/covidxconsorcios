@@ -25,14 +25,14 @@ coeficiente_variacao <- desvio_padrao / media * 100
 coeficiente_variacao
 
 # Gráfico Boxplot
-ccplot <- ggplot(cotas_ativas_ts, aes(y=cotas_ativas_ts)) + geom_boxplot() + labs(y = "Quantidade de cotas (por mil unidades)", title="Cotas Ativas")+theme(axis.text.x=element_text(size=rel(1.5)))+theme(axis.text.y=element_text(size=rel(1.5)))
-ggplotly(ccplot)
+ccplot <- ggplot(cotas_ativas_ts, aes(y=cotas_ativas_ts)) + geom_boxplot() + labs(y = "Quantidade de cotas (por mil unidades)", title="")+theme(axis.text.x=element_text(size=rel(1.5)))+theme(axis.text.y=element_text(size=rel(1.5)))
+ggplotly(ccplot) # Cotas Ativas
 
 # Descomposição da série
 cotas_ativas_ts_components <- decompose(cotas_ativas_ts,type = "additive")
 autoplot(decompose(cotas_ativas_ts, type = "additive"))+
   labs(y="Quantidade de cotas (por mil unidades)", x="Meses") + 
-  ggtitle("Decomposição Série Temporal - Cotas Ativas")
+  ggtitle("") # Decomposição Série Temporal - Cotas Ativas
 
 #
 # Análise ARIMA
@@ -76,16 +76,16 @@ ArchTest(arima_ca_pre$residuals)
 ArchTest(arima_ca_pos$residuals)
 
 # Projeção das 2 séries com os modelos obtidos
-arima_ca_pre %>% forecast(h = 72) %>% autoplot(ylab="Quantidade de cotas (por mil unidades)", xlab='Meses', main="Forecast - Cotas Ativas (Pré-pandemia)")
-arima_ca_pos %>% forecast(h = 41) %>% autoplot(ylab="Quantidade de cotas (por mil unidades)", xlab='Meses', main="Forecast - Cotas Ativas (Pandemia)")
+arima_ca_pre %>% forecast(h = 72) %>% autoplot(ylab="Quantidade de cotas (por mil unidades)", xlab='Meses', main="") # Forecast - Cotas Ativas (Pré-pandemia)
+arima_ca_pos %>% forecast(h = 41) %>% autoplot(ylab="Quantidade de cotas (por mil unidades)", xlab='Meses', main="") # Forecast - Cotas Ativas (Pandemia)
 
 # Decomposição das 2 séries
 autoplot(decompose(cotas_ativas_pre_ts, type = "additive"))+
   labs(y="Quantidade de cotas (por mil unidades)", x="Meses") + 
-  ggtitle("Decomposição Série Temporal - Cotas Ativas - Pré-pandemia")
+  ggtitle("") # Decomposição Série Temporal - Cotas Ativas - Pré-pandemia
 autoplot(decompose(cotas_ativas_pos_ts, type = "additive"))+
   labs(y="Quantidade de cotas (por mil unidades)", x="Meses") + 
-  ggtitle("Decomposição Série Temporal - Cotas Ativas - Pandemia")
+  ggtitle("") # Decomposição Série Temporal - Cotas Ativas - Pandemia
 
 # Regressão linear da tendência das 2 séries para obter os coeficientes
 tslm(cotas_ativas_pre_ts ~ trend)

@@ -25,14 +25,14 @@ coeficiente_variacao <- desvio_padrao / media * 100
 coeficiente_variacao
 
 # Gráfico Boxplot
-ccplot <- ggplot(cotas_comercializadas_ts, aes(y=cotas_comercializadas_ts)) + geom_boxplot() + labs(y = "Quantidade de cotas (por mil unidades)", title="Cotas Comercializadas")+theme(axis.text.x=element_text(size=rel(1.5)))+theme(axis.text.y=element_text(size=rel(1.5)))
-ggplotly(ccplot)
+ccplot <- ggplot(cotas_comercializadas_ts, aes(y=cotas_comercializadas_ts)) + geom_boxplot() + labs(y = "Quantidade de cotas (por mil unidades)", title="")+theme(axis.text.x=element_text(size=rel(1.5)))+theme(axis.text.y=element_text(size=rel(1.5)))
+ggplotly(ccplot) # Cotas Comercializadas
 
 # Descomposição da série
 cotas_comercializadas_ts_components <- decompose(cotas_comercializadas_ts,type = "additive")
 autoplot(decompose(cotas_comercializadas_ts, type = "additive"))+
   labs(y="Quantidade de cotas (por mil unidades)", x="Meses") + 
-  ggtitle("Decomposição Série Temporal - Cotas Comercializadas")
+  ggtitle("") # Decomposição Série Temporal - Cotas Comercializadas
 
 #
 # Análise ARIMA
@@ -76,16 +76,16 @@ ArchTest(arima_cc_pre$residuals)
 ArchTest(arima_cc_pos$residuals)
 
 # Projeção das 2 séries com os modelos obtidos
-arima_cc_pre %>% forecast(h = 72) %>% autoplot(ylab="Quantidade de cotas (por mil unidades)", xlab='Meses', main="Forecast - Cotas Comercializadas (Pré-pandemia)")
-arima_cc_pos %>% forecast(h = 41) %>% autoplot(ylab="Quantidade de cotas (por mil unidades)", xlab='Meses', main="Forecast - Cotas Comercializadas (Pandemia)")
+arima_cc_pre %>% forecast(h = 72) %>% autoplot(ylab="Quantidade de cotas (por mil unidades)", xlab='Meses', main="") # Forecast - Cotas Comercializadas (Pré-pandemia)
+arima_cc_pos %>% forecast(h = 41) %>% autoplot(ylab="Quantidade de cotas (por mil unidades)", xlab='Meses', main="") # Forecast - Cotas Comercializadas (Pandemia)
 
 # Decomposição das 2 séries
 autoplot(decompose(cotas_comercializadas_pre_ts, type = "additive"))+
   labs(y="Quantidade de cotas (por mil unidades)", x="Meses") + 
-  ggtitle("Decomposição Série Temporal - Cotas Comercializadas - Pré-pandemia")
+  ggtitle("") # Decomposição Série Temporal - Cotas Comercializadas - Pré-pandemia
 autoplot(decompose(cotas_comercializadas_pos_ts, type = "additive"))+
   labs(y="Quantidade de cotas (por mil unidades)", x="Meses") + 
-  ggtitle("Decomposição Série Temporal - Cotas Comercializadas - Pandemia")
+  ggtitle("") # Decomposição Série Temporal - Cotas Comercializadas - Pandemia
 
 # Regressão linear da tendência das 2 séries para obter os coeficientes
 tslm(cotas_comercializadas_pre_ts ~ trend)
